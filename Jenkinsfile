@@ -3,29 +3,32 @@ pipeline {
 
     stages {
         stage ('Compile Stage') {
+            tools {
+			maven ‘maven_3.8.3’
+		}
 
             steps {
-                withMaven(maven : 'maven_3.8.3') {
+  
                     sh 'mvn clean compile'
-                }
+                
             }
         }
 
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3.8.3') {
+     
                     sh 'mvn test'
-                }
+                
             }
         }
 
 
         stage ('Deployment Stage') {
             steps {
-                withMaven(maven : 'maven_3.8.3') {
+               
                     sh 'mvn deploy'
-                }
+                
             }
         }
     }
