@@ -1,10 +1,11 @@
 pipeline {
     agent { label 'linux_node'}
-    tools {
-        maven 'maven3.8.3'
-        }
+   
     stages {
         stage ('Hello') {
+             tools {
+        maven 'maven3.8.3'
+        }
             steps {
             sh 'mvn --version'
             }
